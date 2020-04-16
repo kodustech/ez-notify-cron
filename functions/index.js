@@ -25,7 +25,7 @@ if (!firebase.apps.length) {
   res.send('ok')
 } */
 
-const sendMessage = async (req, res) => {
+const sendMessage = async () => {
   try {
     await authFirebase();
     scheduleMessages();
@@ -36,6 +36,6 @@ const sendMessage = async (req, res) => {
 } 
 
 /* exports.teste = functions.https.onRequest(async (req, res) => teste(req, res)); */
-exports.job = functions.pubsub.schedule('0 * * * *').onRun(context => sendMessage(req, res));
+exports.job = functions.pubsub.schedule('0 * * * *').onRun(context => sendMessage());
 
 console.log('---- build ----');
