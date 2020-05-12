@@ -8,6 +8,7 @@ const scheduleMessages = async function() {
     const notificationsRef = firebase.firestore().collection('notification');
     const snapshot = await notificationsRef
       .where('sended', '==', false)
+      .where('date', '==', moment().format('YYYY-MM-DD'))
       .where('hour', '==', moment().subtract(3, 'h').format('HH:mm')) // para o firebase 
       .get();
 
